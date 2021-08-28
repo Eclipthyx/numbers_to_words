@@ -131,8 +131,8 @@ void fill_dict(int argc, char **argv, struct s_node ***dict)
 	//printf("\n\n%d, %d\n", fd, file_size);
 	
 	int		i = 0;
-	struct	s_node* new_node;
 	int		index;
+	struct	s_node* new_node;
 	char	**new_key;
 	char	**new_value;
 	
