@@ -1,72 +1,21 @@
 #include "dict.c"
+#include "dict/dict.h"
+
 static	int	const	BUFFER_SIZE = 10000000;
 extern	int	const	max;
 
 
-int	is_digit(char c)
-{
-	if(c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int is_alpha(char c)
-{
-	if((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z')
-		|| (c == '-'))
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	is_whitespace(char c)
-{
-	if((c == '\t') || c == '\v' || c == '\r'
-		|| c == '\n' || c == ' ' || c == ':')
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	hash(char *str, int index, char **key)
+//Returns hash that serves as an index for a dict
+//And sets key and value
+int	index_hash(char *str, int *index, struct s_node *node)
 {
 	int	result;
-	int	i;
-	int j;
 
-	i = 0;
-	result = 0;
-	while (is_digit(str[i + index]))
-	{
-		result = (str[i + index] * (i + 1) + result) % max;
-		i++;
-	}
-	/*
-	*key = malloc(i);
-	j = 0;
-	while (j < i)
-	{
-		(*key)[j] = str[index + j];
-	}*/
+	result = set_key(str, index, &node->key);
+	skip_whitespace(str, index);
+	set_value(str, index, &node->value);
 
 	return (result);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		++i;
-	}
 }
 
 
@@ -111,27 +60,24 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	
 	int		i = 0;
 	struct	s_node* new_node;
-	int		index_hash;
-	char	**key;
-	char	**value;
-	int		key_size;
-	int		value_size;
+	int		index_dict;
+	char	**new_key;
+	char	**new_value;
+
 
 	while(i < file_size)
-	{
-		write(1, "\n", 1);
-		
-		while(is_digit(file_string[i]) && (i < file_size))
+	{		
+		if(is_digit(file_string[i]) && (i < file_size))
 		{
-			index_hash = hash(file_string, i, key);
-			write(1, file_string + i, 1);
-			i++;
-		}
-		while(is_alpha(file_string[i]) && (i < file_size))
-		{
-			write(1, file_string + i, 1);
-			i++;
+			new_node = malloc(sizeof (struct s_node));
+			new_node->next = 0;
+			new_node->key = *new_key;
+			new_node->value = *new_value;
+			index_dict = index_hash(file_string, &i, new_node);
+			printf("%s, %s\n\n", new_node->key, new_node->value);
+
 		}
 		i++;
 	}
+	
 }
