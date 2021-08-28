@@ -1,4 +1,4 @@
-static	int	const	max = 1000;
+int	const	max = 1000;
 
 //Key pair entries for use in the hashmap linked list dictionary
 struct s_node{

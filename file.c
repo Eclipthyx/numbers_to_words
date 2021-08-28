@@ -1,5 +1,8 @@
 #include "dict.c"
 static	int	const	BUFFER_SIZE = 10000000;
+extern	int	const	max;
+
+
 int	is_digit(char c)
 {
 	if(c >= '0' && c <= '9')
@@ -28,6 +31,29 @@ int	is_whitespace(char c)
 		return (1);
 	}
 	return (0);
+}
+
+int	hash(char *str, int index, char **key)
+{
+	int	result;
+	int	i;
+	int j;
+
+	i = 0;
+	result = 0;
+	while (is_digit(str[i + index]))
+	{
+		result = (str[i + index] * (i + 1) + result) % max;
+		i++;
+	}
+	*key = malloc(i);
+	j = 0;
+	while (j < i)
+	{
+		(*key)[j] = str[index + j];
+	}
+
+	return (result);
 }
 
 void fill_dict(int argc, char **argv, struct s_node **dict)
@@ -67,35 +93,28 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	write(1, file_string, BUFFER_SIZE);
 	printf("\n\n%d, %d\n", fd, file_size);
 	
-	int i = 0;
+	int		i = 0;
+	struct	s_node* new_node;
+	int		index_hash;
+	char	**key;
+	char	**value;
+	int		key_size;
+	int		value_size;
+
 	while(i < file_size)
 	{
 		while(is_digit((file_string[i]) && i < file_size))
 		{
+			index_hash = hash(file_string, i, key);
 			i++;
 		}
 		while(is_whitespace((file_string[i]) && i < file_size))
-		{
 			i++;
-		}
 		while(is_alpha((file_string[i]) && i < file_size))
 		{
 			i++;
 		}
+		while(is_whitespace((file_string[i]) && i < file_size))
+			i++;
 	}
-}
-
-int	hash(char *str, int index, int max)
-{
-	int	result;
-	int	i;
-
-	i = index;
-	result = 0;
-	while (is_digit(str[i]))
-	{
-		result = (str[i] * i + result) % max;
-		i++;
-	}
-	return (result);
 }
