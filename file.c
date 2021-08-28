@@ -46,15 +46,29 @@ int	hash(char *str, int index, char **key)
 		result = (str[i + index] * (i + 1) + result) % max;
 		i++;
 	}
+	/*
 	*key = malloc(i);
 	j = 0;
 	while (j < i)
 	{
 		(*key)[j] = str[index + j];
-	}
+	}*/
 
 	return (result);
 }
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		++i;
+	}
+}
+
 
 void fill_dict(int argc, char **argv, struct s_node **dict)
 {
@@ -74,9 +88,11 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	//and some other file can use that index.
 	if(argc == 2)
 	{
+		write(1, "FIRST\n", 6);
 		fd = open("numbers.dict", O_RDONLY);
 	}else if(argc == 3)
 	{
+		write(1, "SECOND\n", 7);
 		fd = open(argv[1], O_RDONLY);
 	}else
 	{
@@ -90,8 +106,8 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	int file_size = read(fd, file_string, BUFFER_SIZE);
 
 	//Output result so we can see
-	write(1, file_string, BUFFER_SIZE);
-	printf("\n\n%d, %d\n", fd, file_size);
+	//write(1, file_string, BUFFER_SIZE);
+	//printf("\n\n%d, %d\n", fd, file_size);
 	
 	int		i = 0;
 	struct	s_node* new_node;
@@ -103,18 +119,19 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 
 	while(i < file_size)
 	{
-		while(is_digit((file_string[i]) && i < file_size))
+		write(1, "\n", 1);
+		
+		while(is_digit(file_string[i]) && (i < file_size))
 		{
 			index_hash = hash(file_string, i, key);
+			write(1, file_string + i, 1);
 			i++;
 		}
-		while(is_whitespace((file_string[i]) && i < file_size))
-			i++;
-		while(is_alpha((file_string[i]) && i < file_size))
+		while(is_alpha(file_string[i]) && (i < file_size))
 		{
+			write(1, file_string + i, 1);
 			i++;
 		}
-		while(is_whitespace((file_string[i]) && i < file_size))
-			i++;
+		i++;
 	}
 }
