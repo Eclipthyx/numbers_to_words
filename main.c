@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "file.c"
+#include "constants.h"
 
 int main(int argc, char **argv)
 {

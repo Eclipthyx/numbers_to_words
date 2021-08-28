@@ -1,4 +1,4 @@
-int	const	max = 1000;
+#include "constants.h"
 
 //Key pair entries for use in the hashmap linked list dictionary
 struct s_node{
@@ -12,11 +12,9 @@ void init_dict(struct s_node **dict)
 {
 	int i;
     i = 0;
-    while (i < max)
+    while (i < g_max)
     {
-		dict[i]->next = 0;
-		dict[i]->key = 0;
-		dict[i]->value = 0;
+		dict[i] = 0;
         i++;
 	}
 }

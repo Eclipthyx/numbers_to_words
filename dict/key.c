@@ -1,3 +1,5 @@
+#include "../constants.h"
+
 int	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -17,7 +19,7 @@ int	set_key(char *str, int *index, char **key)
 	result = 0;
 	while (is_digit(str[i + *index]))
 	{
-		result = (str[i + *index] * (i + 1) + result) % max;
+		result = (str[i + *index] * (i + 1) + result) % g_max;
 		i++;
 	}
 	*key = malloc(i * sizeof (char) + 1);

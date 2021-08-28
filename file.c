@@ -1,25 +1,97 @@
 #include "dict.c"
 #include "dict/dict.h"
+#include "constants.h"
 
-static	int	const	BUFFER_SIZE = 10000000;
-extern	int	const	max;
+/*
+ *This function finds the given key in the Linked List
+ *Returns it's index
+ *Returns -1 in case key is not present
+*/
+int find(struct s_node *list, char *key)
+{
+	int retval = 0;
+	struct s_node *temp = list;
+	while (temp != NULL) 
+	{
+		if (temp->key == key)
+		{
+			return retval;
+		}
+  		temp = temp->next;
+		retval++;
+	}
+	return -1;
+ 
+}
+ 
+/* Returns the s_node (Linked List item) located at given find_index  */
+struct s_node* get_element(struct s_node *list, int find_index)
+{
+	int i = 0;
+	struct s_node *temp = list;
+	while (i != find_index) 
+        {
+		temp = temp->next;
+		i++;
+	}
+	return temp;
+}
 
-
+void insert(struct s_node **dict, struct s_node *new_node, int index)
+{
+	struct s_node *ptr; 
+	if(dict[index] != 0)
+	{
+		ptr = dict[index];
+		while(ptr->next != 0)
+		{
+			ptr = ptr->next;
+		}
+		ptr->next = new_node;
+	}else{
+		dict[index] = new_node;
+	}
+}
 //Returns hash that serves as an index for a dict
 //And sets key and value
-int	index_hash(char *str, int *index, struct s_node *node)
+void	process_line(char *str, int *index, struct s_node *node, struct s_node **dict)
 {
-	int	result;
+	int	index_hash;
 
-	result = set_key(str, index, &node->key);
+	index_hash = set_key(str, index, &node->key);
 	skip_whitespace(str, index);
 	set_value(str, index, &node->value);
-
-	return (result);
+	insert(dict, node, index_hash);
 }
 
 
-void fill_dict(int argc, char **argv, struct s_node **dict)
+
+
+/* To display the contents of Hash Table */
+void display(struct s_node **dict)
+{
+	int	i;
+	struct s_node *ptr;
+
+	i = 0;
+	while(i < g_max)
+	{
+		if(dict[i] != 0)
+		{
+			printf("%s, %s", dict[i]->key, dict[i]->value);
+			ptr = dict[i];
+			while(ptr->next != 0)
+			{
+				ptr = ptr->next;
+				printf("<---> %s, %s", ptr->key, ptr->value);
+			}
+			printf("\n");
+		}
+		i++;
+	}
+}
+
+void fill_dict(int argc, char **argv, struct s_node ***dict)
 {
 	int			fd;
 	char		*file_string;
@@ -60,11 +132,12 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	
 	int		i = 0;
 	struct	s_node* new_node;
-	int		index_dict;
+	int		index;
 	char	**new_key;
 	char	**new_value;
-
-
+	
+	*dict = malloc(g_max * sizeof (struct s_node *));
+	init_dict(*dict);
 	while(i < file_size)
 	{		
 		if(is_digit(file_string[i]) && (i < file_size))
@@ -73,11 +146,10 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 			new_node->next = 0;
 			new_node->key = *new_key;
 			new_node->value = *new_value;
-			index_dict = index_hash(file_string, &i, new_node);
-			printf("%s, %s\n\n", new_node->key, new_node->value);
+			process_line(file_string, &i, new_node, *dict);
 
 		}
 		i++;
 	}
-	
+	display(*dict);
 }
