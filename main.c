@@ -9,6 +9,6 @@ int main(int argc, char **argv)
     struct      s_node **dict;
 
 	
-	fill_dict(argc, argv, dict);
+	fill_dict(argc, argv, &dict);
 	//Index in table pointed to by fd (like pointing to numbers.dict)  
 }
