@@ -1,6 +1,6 @@
 int	is_whitespace(char c)
 {
-	if((c == '\t') || c == '\v' || c == '\r'
+	if ((c == '\t') || c == '\v' || c == '\r'
 		|| c == '\n' || c == ' ' || c == ':')
 	{
 		return (1);
@@ -8,9 +8,11 @@ int	is_whitespace(char c)
 	return (0);
 }
 
-void skip_whitespace(char *str, int *index)
+void	skip_whitespace(char *str, int *index)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (is_whitespace(str[i + *index]))
 	{
 		i++;

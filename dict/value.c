@@ -1,6 +1,6 @@
-int is_alpha(char c)
+int	is_alpha(char c)
 {
-	if((c >= 'a' && c <= 'z')
+	if ((c >= 'a' && c <= 'z')
 		|| (c >= 'A' && c <= 'Z')
 		|| (c == '-'))
 	{
@@ -9,17 +9,17 @@ int is_alpha(char c)
 	return (0);
 }
 
-void set_value(char *str, int *index, char **value)
+void	set_value(char *str, int *index, char **value)
 {
-	int i = 0;
+	int	i;
+	int	j;
+
+	i = 0;
 	while (is_alpha(str[i + *index]))
 	{
 		i++;
 	}
-
-	int j;
 	*value = malloc(i * sizeof (char) + 1);
-	
 	j = 0;
 	while (j < i)
 	{
@@ -27,5 +27,5 @@ void set_value(char *str, int *index, char **value)
 		j++;
 	}
 	(*value)[j] = '\0';
-	*index += + i;
+	*index += i;
 }
