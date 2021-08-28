@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 //Key pair entries for use in the hashmap linked list dictionary
-struct Entry{
-	struct	Entry *next;
+struct s_entry{
+	struct	s_entry *next;
 	char	*key;
 	char	*value;
 };
