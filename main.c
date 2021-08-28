@@ -11,5 +11,7 @@ int main(int argc, char **argv)
 
 	
 	fill_dict(argc, argv, &dict);
+    convert(argc, argv, dict);
+    //display(dict);
 	//Index in table pointed to by fd (like pointing to numbers.dict)  
 }

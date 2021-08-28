@@ -15,7 +15,7 @@ void	set_value(char *str, int *index, char **value)
 	int	j;
 
 	i = 0;
-	while (is_alpha(str[i + *index]))
+	while (str[i + *index] != '\n' && str[i + *index] != '\0')
 	{
 		i++;
 	}

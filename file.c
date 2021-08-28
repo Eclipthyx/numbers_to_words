@@ -2,40 +2,30 @@
 #include "dict/dict.h"
 #include "constants.h"
 
-/*
- *This function finds the given key in the Linked List
- *Returns it's index
- *Returns -1 in case key is not present
-*/
-int find(struct s_node *list, char *key)
+int	str_cmp(char *s1, char *s2)
+{
+	while (*s1 != '\0' && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
+}
+
+char *find(struct s_node *node, char *key)
 {
 	int retval = 0;
-	struct s_node *temp = list;
-	while (temp != NULL) 
+	struct s_node *ptr = node;
+	while (ptr != 0) 
 	{
-		if (temp->key == key)
+		if (str_cmp(ptr->key, key) == 0)
 		{
-			return retval;
+			return (ptr->value);
 		}
-  		temp = temp->next;
-		retval++;
+  		ptr = ptr->next;
 	}
-	return -1;
- 
 }
- 
-/* Returns the s_node (Linked List item) located at given find_index  */
-struct s_node* get_element(struct s_node *list, int find_index)
-{
-	int i = 0;
-	struct s_node *temp = list;
-	while (i != find_index) 
-        {
-		temp = temp->next;
-		i++;
-	}
-	return temp;
-}
+
 
 void insert(struct s_node **dict, struct s_node *new_node, int index)
 {
@@ -54,14 +44,19 @@ void insert(struct s_node **dict, struct s_node *new_node, int index)
 }
 //Returns hash that serves as an index for a dict
 //And sets key and value
-void	process_line(char *str, int *index, struct s_node *node, struct s_node **dict)
+void	process_line(char *str, int *index, struct s_node *new_node, struct s_node **dict)
 {
 	int	index_hash;
+	char	**new_key;
+	char	**new_value;
 
-	index_hash = set_key(str, index, &node->key);
+	new_node->next = 0;
+	new_node->key = *new_key;
+	new_node->value = *new_value;
+	index_hash = set_key(str, index, &new_node->key);
 	skip_whitespace(str, index);
-	set_value(str, index, &node->value);
-	insert(dict, node, index_hash);
+	set_value(str, index, &new_node->value);
+	insert(dict, new_node, index_hash);
 }
 
 
@@ -78,7 +73,7 @@ void display(struct s_node **dict)
 	{
 		if(dict[i] != 0)
 		{
-			printf("%s, %s", dict[i]->key, dict[i]->value);
+			printf("%d, %s, %s",i,  dict[i]->key, dict[i]->value);
 			ptr = dict[i];
 			while(ptr->next != 0)
 			{
@@ -95,46 +90,24 @@ void fill_dict(int argc, char **argv, struct s_node ***dict)
 {
 	int			fd;
 	char		*file_string;
-	//Check if there are 2 or three arguments else error.
-	//Program name, string argument, optional(string argument)
 
-	//Then open file with open(FILENAME, MODE). 
-	//MODE can be read, write, readwrite etc. But we want only read 
-	//open returns a positive integer 3 to infinity if file can be opened
-	// and 0 if file cannot be opened.
-
-	//The integer is the index in a table which links the index to a particular file
-	//The integer always starts at 3 and goes up. 
-	//When a file is closed again with close(fd) the index in the table will be free again
-	//and some other file can use that index.
 	if(argc == 2)
 	{
-		write(1, "FIRST\n", 6);
 		fd = open("numbers.dict", O_RDONLY);
 	}else if(argc == 3)
 	{
-		write(1, "SECOND\n", 7);
 		fd = open(argv[1], O_RDONLY);
 	}else
 	{
 		write(1, "Error\n", 6);
 	}
 	
-	//Allocate a buffer (memory region) so we can write all the file data  we read somewhere
 	file_string = malloc(BUFFER_SIZE * sizeof (char));
-	//Read the file pointed to by fd for BUFFER_SIZE characters long and put it into 
-	//the char * file_string
-	int file_size = read(fd, file_string, BUFFER_SIZE);
 
-	//Output result so we can see
-	//write(1, file_string, BUFFER_SIZE);
-	//printf("\n\n%d, %d\n", fd, file_size);
+	int file_size = read(fd, file_string, BUFFER_SIZE);
 	
 	int		i = 0;
 	int		index;
-	struct	s_node* new_node;
-	char	**new_key;
-	char	**new_value;
 	
 	*dict = malloc(g_max * sizeof (struct s_node *));
 	init_dict(*dict);
@@ -142,14 +115,119 @@ void fill_dict(int argc, char **argv, struct s_node ***dict)
 	{		
 		if(is_digit(file_string[i]) && (i < file_size))
 		{
+			struct	s_node* new_node;
 			new_node = malloc(sizeof (struct s_node));
-			new_node->next = 0;
-			new_node->key = *new_key;
-			new_node->value = *new_value;
 			process_line(file_string, &i, new_node, *dict);
-
 		}
 		i++;
 	}
-	display(*dict);
 }
+
+void make_number(char *original, char **copy, int size, int index)
+{
+	int i = 0;
+	*copy = malloc(size * sizeof(char) + 1);
+	while(i < size)
+	{
+		(*copy)[i] = original[i + index];
+		i++;
+	}
+	(*copy)[i] = '\0';
+}
+
+char *make_number2(char *original, int size,  int index)
+{
+	int i;
+	char *new;
+	
+	i = 0;
+	new = malloc(size * sizeof(char) + 1);
+	
+	new[0] = original[index];
+	i = 1;
+	
+	while(i < size)
+	{
+		new[i] = '0';
+		i++;
+	}
+	new[i] = '\0';
+
+	return new;
+}
+
+int count_digits(char *string)
+{
+	int i;
+	i = 0;
+	while(string[i] != '\0')
+	{
+		i++;
+	}
+	return i;
+}
+
+
+void f(char *string, int size, struct s_node **dict)
+{
+	int digit_count;
+	char *new;
+	char *value;
+	int temp = 0;
+	int index_hash;
+	int skip;
+	digit_count = count_digits(string);
+
+	skip = (digit_count - 1) % 3 + 1;
+
+	if((digit_count > 0)
+		&& (string[0] != '0')
+		&& (string[0] != '\0'))
+	{
+		new = make_number2(string, digit_count, 0);
+		index_hash = calculate_hash(new, &temp, 0);
+		value = find(dict[index_hash], new);
+		printf("\n[%s]", value);
+		printf("FIRST{%d}[%s]", (digit_count - 1) % 3 + 1, new);
+
+		f(string + 1, 0, dict);
+	}
+	//make_number(string, &word, , index);
+}
+
+
+void	convert(int argc, char **argv, struct s_node **dict)
+{
+	char *string;
+	int index;
+	int size;
+	int i;
+	char *number;
+
+	
+	if(argc == 2)
+	{
+		string = argv[1];
+	}else if(argc == 3)
+	{
+		string = argv[2];
+	}else
+	{
+		write(1, "Error\n", 6);
+	}
+	size = 0;
+	i = 0;
+	while(string[size] != '\0')
+	{		
+		size++;
+	}
+
+	f(string, 0, dict);	
+
+	
+	//make_number2(orig, &new, digit_count, 0);
+	//f(string, 0, size);
+			//index = calculate_hash(string, &i, 0);
+
+}
+
