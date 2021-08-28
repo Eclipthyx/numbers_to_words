@@ -66,21 +66,36 @@ void fill_dict(int argc, char **argv, struct s_node **dict)
 	//Output result so we can see
 	write(1, file_string, BUFFER_SIZE);
 	printf("\n\n%d, %d\n", fd, file_size);
-	/*
+	
 	int i = 0;
 	while(i < file_size)
 	{
-		while(is_digit((file_string[i]) && i < file_size)
+		while(is_digit((file_string[i]) && i < file_size))
 		{
 			i++;
 		}
-		while(is_whitespace((file_string[i]) && i < file_size)
+		while(is_whitespace((file_string[i]) && i < file_size))
 		{
 			i++;
 		}
-		while(is_alpha((file_string[i]) && i < file_size)
+		while(is_alpha((file_string[i]) && i < file_size))
 		{
 			i++;
 		}
-	}*/
+	}
+}
+
+int	hash(char *str, int index, int max)
+{
+	int	result;
+	int	i;
+
+	i = index;
+	result = 0;
+	while (is_digit(str[i]))
+	{
+		result = (str[i] * i + result) % max;
+		i++;
+	}
+	return (result);
 }
