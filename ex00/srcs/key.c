@@ -25,7 +25,7 @@ int	set_key(char *str, int *index, struct s_node *node)
 	int	j;
 
 	i = 0;
-	result = calculate_hash(str +*index, &i);
+	result = calculate_hash(str + *index, &i);
 	node->key = malloc(i * sizeof (char) + 1);
 	node->next = 0;
 	j = 0;
