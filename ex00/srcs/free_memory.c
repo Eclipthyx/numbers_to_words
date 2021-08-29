@@ -14,7 +14,7 @@ void	free_hash_map(struct s_node **dict)
 		if (dict[i] != 0)
 		{
 			ptr = dict[i];
-			while(ptr->next != 0)
+			while (ptr->next != 0)
 			{
 				ptr2 = ptr->next;
 				free(ptr->key);

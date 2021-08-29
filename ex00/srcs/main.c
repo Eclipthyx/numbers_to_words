@@ -7,6 +7,20 @@
 #include "../include/constants.h"
 #include "../include/free_memory.h"
 
+char	*remove_zeroes(char *o)
+{
+	int	i;
+
+	i = 0;
+	while (o[i] == '0')
+	{
+		i++;
+	}
+	if (o[i] == '\0')
+		return (o + i - 1);
+	return (o + i);
+}
+
 int	main(int argc, char **argv)
 {
 	struct s_node	**dict;
@@ -28,8 +42,9 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	rec(string + start, count_digits(string), dict, 0);
+	string = remove_zeroes(string + start);
+	rec(string, count_digits(string), dict, 0);
 	write(1, "\n", 1);
-    free_hash_map(dict);
+	free_hash_map(dict);
 	return (0);
 }

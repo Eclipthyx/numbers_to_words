@@ -1,154 +1,154 @@
-==238237== Memcheck, a memory error detector
-==238237== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==238237== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==238237== Command: ./a.out 1111
-==238237== Parent PID: 225847
-==238237== 
---238237-- 
---238237-- Valgrind options:
---238237--    --leak-check=full
---238237--    --show-leak-kinds=all
---238237--    --track-origins=yes
---238237--    --verbose
---238237--    --log-file=valgrind-out.txt
---238237-- Contents of /proc/version:
---238237--   Linux version 5.8.0-59-generic (buildd@lcy01-amd64-022) (gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #66~20.04.1-Ubuntu SMP Thu Jun 17 11:14:10 UTC 2021
---238237-- 
---238237-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
---238237-- Page sizes: currently 4096, max supported 4096
---238237-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---238237-- Reading syms from /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out
---238237-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
---238237--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
---238237--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
---238237--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
---238237--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
---238237--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
---238237--   .. CRC is valid
---238237-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---238237--    object doesn't have a symbol table
---238237--    object doesn't have a dynamic symbol table
---238237-- Scheduler: using generic scheduler lock implementation.
---238237-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==238237== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-238237-by-eclipthyx-on-???
-==238237== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-238237-by-eclipthyx-on-???
-==238237== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-238237-by-eclipthyx-on-???
-==238237== 
-==238237== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==238237== don't want to do, unless you know exactly what you're doing,
-==238237== or are doing some strange experiment):
-==238237==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=238237 ...command...
-==238237== 
-==238237== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==238237==   /path/to/gdb ./a.out
-==238237== and then give GDB the following command
-==238237==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=238237
-==238237== --pid is optional if only one valgrind process is running
-==238237== 
---238237-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---238237-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---238237-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---238237--    object doesn't have a symbol table
---238237-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---238237--    object doesn't have a symbol table
-==238237== WARNING: new redirection conflicts with existing -- ignoring it
---238237--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---238237--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
---238237-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
---238237-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
---238237-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
---238237--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
---238237--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
---238237--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
---238237--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
---238237--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
---238237--   .. CRC is valid
---238237-- REDIR: 0x4900600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4901dd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491ce60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491c9a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff2d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x49006c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491c960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff7f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff3b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491e0d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491c9e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff9a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ff7b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4908d20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x49009d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x491cab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x48ffc60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x49008d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4901e10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x4900a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
---238237-- REDIR: 0x49e8490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
---238237-- REDIR: 0x48fa260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
-==238237== Conditional jump or move depends on uninitialised value(s)
-==238237==    at 0x109FC1: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1099FD: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==  Uninitialised value was created by a heap allocation
-==238237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==238237==    by 0x109988: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237== 
-==238237== Conditional jump or move depends on uninitialised value(s)
-==238237==    at 0x109FDD: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1099FD: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==  Uninitialised value was created by a heap allocation
-==238237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==238237==    by 0x109988: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237== 
---238237-- REDIR: 0x48fa850 (libc.so.6:free) redirected to 0x483c9d0 (free)
-==238237== 
-==238237== HEAP SUMMARY:
-==238237==     in use at exit: 0 bytes in 0 blocks
-==238237==   total heap usage: 130 allocs, 130 frees, 10,081,650 bytes allocated
-==238237== 
-==238237== All heap blocks were freed -- no leaks are possible
-==238237== 
-==238237== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
-==238237== 
-==238237== 1 errors in context 1 of 2:
-==238237== Conditional jump or move depends on uninitialised value(s)
-==238237==    at 0x109FDD: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1099FD: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==  Uninitialised value was created by a heap allocation
-==238237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==238237==    by 0x109988: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237== 
-==238237== 
-==238237== 1 errors in context 2 of 2:
-==238237== Conditional jump or move depends on uninitialised value(s)
-==238237==    at 0x109FC1: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1099FD: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==  Uninitialised value was created by a heap allocation
-==238237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==238237==    by 0x109988: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237==    by 0x1097DE: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
-==238237== 
-==238237== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==242440== Memcheck, a memory error detector
+==242440== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==242440== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==242440== Command: ./a.out 12345000
+==242440== Parent PID: 225847
+==242440== 
+--242440-- 
+--242440-- Valgrind options:
+--242440--    --leak-check=full
+--242440--    --show-leak-kinds=all
+--242440--    --track-origins=yes
+--242440--    --verbose
+--242440--    --log-file=valgrind-out.txt
+--242440-- Contents of /proc/version:
+--242440--   Linux version 5.8.0-59-generic (buildd@lcy01-amd64-022) (gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #66~20.04.1-Ubuntu SMP Thu Jun 17 11:14:10 UTC 2021
+--242440-- 
+--242440-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--242440-- Page sizes: currently 4096, max supported 4096
+--242440-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--242440-- Reading syms from /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out
+--242440-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--242440--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--242440--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--242440--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--242440--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--242440--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--242440--   .. CRC is valid
+--242440-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--242440--    object doesn't have a symbol table
+--242440--    object doesn't have a dynamic symbol table
+--242440-- Scheduler: using generic scheduler lock implementation.
+--242440-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==242440== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-242440-by-eclipthyx-on-???
+==242440== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-242440-by-eclipthyx-on-???
+==242440== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-242440-by-eclipthyx-on-???
+==242440== 
+==242440== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==242440== don't want to do, unless you know exactly what you're doing,
+==242440== or are doing some strange experiment):
+==242440==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=242440 ...command...
+==242440== 
+==242440== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==242440==   /path/to/gdb ./a.out
+==242440== and then give GDB the following command
+==242440==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=242440
+==242440== --pid is optional if only one valgrind process is running
+==242440== 
+--242440-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--242440-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--242440-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--242440--    object doesn't have a symbol table
+--242440-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--242440--    object doesn't have a symbol table
+==242440== WARNING: new redirection conflicts with existing -- ignoring it
+--242440--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--242440--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--242440-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--242440-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--242440-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--242440--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--242440--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--242440--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--242440--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--242440--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--242440--   .. CRC is valid
+--242440-- REDIR: 0x4900600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4901dd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491ce60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491c9a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff2d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x49006c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491c960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff7f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff3b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491e0d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491c9e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff9a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ff7b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4908d20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x49009d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x491cab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x48ffc60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x49008d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4901e10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x4900a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--242440-- REDIR: 0x49e8490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--242440-- REDIR: 0x48fa260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+==242440== Conditional jump or move depends on uninitialised value(s)
+==242440==    at 0x10A0EA: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109A6F: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==  Uninitialised value was created by a heap allocation
+==242440==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==242440==    by 0x1099FA: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440== 
+==242440== Conditional jump or move depends on uninitialised value(s)
+==242440==    at 0x10A106: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109A6F: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==  Uninitialised value was created by a heap allocation
+==242440==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==242440==    by 0x1099FA: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440== 
+--242440-- REDIR: 0x48fa850 (libc.so.6:free) redirected to 0x483c9d0 (free)
+==242440== 
+==242440== HEAP SUMMARY:
+==242440==     in use at exit: 0 bytes in 0 blocks
+==242440==   total heap usage: 132 allocs, 132 frees, 10,081,661 bytes allocated
+==242440== 
+==242440== All heap blocks were freed -- no leaks are possible
+==242440== 
+==242440== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==242440== 
+==242440== 1 errors in context 1 of 2:
+==242440== Conditional jump or move depends on uninitialised value(s)
+==242440==    at 0x10A106: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109A6F: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==  Uninitialised value was created by a heap allocation
+==242440==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==242440==    by 0x1099FA: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440== 
+==242440== 
+==242440== 1 errors in context 2 of 2:
+==242440== Conditional jump or move depends on uninitialised value(s)
+==242440==    at 0x10A0EA: set_value (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x10933C: process_line (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109A6F: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==  Uninitialised value was created by a heap allocation
+==242440==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==242440==    by 0x1099FA: fill_dict (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440==    by 0x109840: main (in /home/eclipthyx/Desktop/codam/RUSH/RUSH_02/ex00/srcs/a.out)
+==242440== 
+==242440== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

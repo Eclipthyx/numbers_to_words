@@ -21,7 +21,7 @@ void	display_word(struct s_object obj, int number_size, int mode)
 	index_hash = calculate_hash(new, &temp);
 	value = find(obj.dict[index_hash], new);
 	put_str(value);
-    free(new);
+	free(new);
 }
 
 void	rec_1(struct s_object obj, int size, int digit_count)
@@ -33,13 +33,16 @@ void	rec_1(struct s_object obj, int size, int digit_count)
 		if (digit_count > 1)
 			display_word(obj, digit_count, 1);
 	}
-	else if (*(obj.string - 1) != '0' || *(obj.string - 2) != '0')
+	else if (((*(obj.string - 1) != '0') && (size - digit_count >= 1))
+		|| (*(obj.string - 2) != '0') && (size - digit_count >= 2))
 	{
 		if (digit_count > 1)
 			display_word(obj, digit_count, 1);
 		if (size == 1)
 			display_word(obj, digit_count, 2);
 	}
+	else if (size == 1 && obj.string[0] == '0')
+		display_word(obj, 1, 2);
 	rec(obj.string + 1, size, obj.dict, 1);
 }
 
@@ -59,7 +62,13 @@ void	rec_2(struct s_object obj, int size, int digit_count)
 	{
 		display_word(obj, 2, 3);
 		rec(obj.string + 1, size, obj.dict, 1);
-	}		
+	}
+	else if (size - digit_count == 1)
+	{
+		if (*(obj.string - 1) >= '1' && *(obj.string - 1) <= '9')
+			display_word(obj, digit_count - 1, 1);
+		rec(obj.string + 2, size, obj.dict, 1);
+	}
 }
 
 void	rec_3(struct s_object obj, int size)

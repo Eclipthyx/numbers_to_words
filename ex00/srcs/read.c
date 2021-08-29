@@ -47,7 +47,7 @@ int	fill_dict(int argc, char **argv, struct s_node ***dict)
 			process_line(file_string, &i, *dict);
 		i++;
 	}
-    free(file_string);
+	free(file_string);
 	return (0);
 }
 
