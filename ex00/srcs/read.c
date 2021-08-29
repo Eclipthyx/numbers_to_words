@@ -38,6 +38,8 @@ int	fill_dict(int argc, char **argv, struct s_node ***dict)
 		fd = open(argv[1], O_RDONLY);
 	else
 		return (1);
+	if (fd == -1)
+		return (1);
 	file_string = malloc(g_buffer_size * sizeof (char));
 	file_size = read(fd, file_string, g_buffer_size);
 	i = 0;
