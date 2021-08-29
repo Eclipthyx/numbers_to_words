@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
 	
 	fill_dict(argc, argv, &dict);
-    display_number(argc, argv, dict);
+    display_words(argc, argv, dict);
     //display_hash_map(dict);
 	//Index in table pointed to by fd (like pointing to numbers.dict)  
 }

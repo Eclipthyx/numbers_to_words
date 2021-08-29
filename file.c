@@ -36,7 +36,7 @@ void fill_dict(int argc, char **argv, struct s_node ***dict)
 }
 
 
-void f2(char *string, struct s_node **dict, int number_size, int mode)
+void display_word(char *string, struct s_node **dict, int number_size, int mode)
 {
 	char *new;
 	char *value;
@@ -49,64 +49,65 @@ void f2(char *string, struct s_node **dict, int number_size, int mode)
 	put_str(value);
 	write(1, " ", 1);
 }
-void f(char *string, int size, struct s_node **dict)
+void rec(char *string, int size, struct s_node **dict)
 {
 	int digit_count;
 	int skip;
 	digit_count = count_digits(string);
 	skip = (digit_count - 1) % 3 + 1;
-	printf("[%d]", skip);
 
 	if((digit_count > 0) && (string[0] != '\0'))
 	{
 		if(skip == 1)
 		{
-			//write(1, " ONE ", 5);
-	
-				f2(string, dict, 1, 2);										
+			if(string[0] != '0')
+			{
+				display_word(string, dict, 1, 2);										
 				if(digit_count > 1)
 				{
-					f2(string, dict, digit_count, 1);
+					display_word(string, dict, digit_count, 1);
 				}
-			
-			//write(1, " TWO ", 5);
-
-			f(string + 1, 0, dict);
+			}else if(*(string - 1) != '0' || *(string - 2) != '0')
+			{
+				if(digit_count > 1)
+					display_word(string, dict, digit_count, 1);
+			}
+			rec(string + 1, 0, dict);
 		}else if(skip == 2)
 		{
 			if(string[0] == '1' && string[1] != '0')
 			{
-				f2(string, dict, 2, 2);
-				f(string + 2, 1, dict);
+				display_word(string, dict, 2, 2);
+				rec(string + 2, size, dict);
 			}	
 			else if(string[0] == '0')
 			{
-				f(string + 1, 1, dict);
+				rec(string + 1, size, dict);
 			}else if(string[0] > '1')
 			{
 				if(string[1] == '0')
 				{
-					f2(string, dict, 2, 3);
-					f2(string + 1, dict, digit_count - 1, 1);
-					f(string + 2, 1, dict);
+					display_word(string, dict, 2, 3);
+					rec(string + 1, size, dict);
 				}
 				else
 				{
-					f2(string, dict, 2, 3);
-					f(string + 1, 1, dict);
+					display_word(string, dict, 2, 3);
+					rec(string + 1, size, dict);
 				}
 			}
 		}else if(skip == 3){
-			f2(string, dict, 1, 2);
-			f2(string, dict, 3, 1);
-			f(string + 1, 1, dict);
+			if(string[0] != '0')
+			{
+				display_word(string, dict, 1, 2);
+				display_word(string, dict, 3, 1);
+			}
+			rec(string + 1, size, dict);
 		}			
-
 	}
 }
 
-
-void	display_number(int argc, char **argv, struct s_node **dict)
+void	display_words(int argc, char **argv, struct s_node **dict)
 {
 	char *string;
 	
@@ -117,6 +118,6 @@ void	display_number(int argc, char **argv, struct s_node **dict)
 	else
 		write(1, "Error\n", 6);
 
-	f(string, 0, dict);	
+	rec(string, count_digits(string), dict);	
 }
 
