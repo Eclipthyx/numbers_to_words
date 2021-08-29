@@ -34,7 +34,7 @@ void	rec_1(struct s_object obj, int size, int digit_count)
 			display_word(obj, digit_count, 1);
 	}
 	else if (((*(obj.string - 1) != '0') && (size - digit_count >= 1))
-		|| (*(obj.string - 2) != '0') && (size - digit_count >= 2))
+		|| ((*(obj.string - 2) != '0') && (size - digit_count >= 2)))
 	{
 		if (digit_count > 1)
 			display_word(obj, digit_count, 1);

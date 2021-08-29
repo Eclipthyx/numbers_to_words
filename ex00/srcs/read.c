@@ -58,7 +58,7 @@ int	check_string(char *str)
 	int	index;
 	int	flag;
 
-	flag = 0;
+	flag = 1;
 	i = 0;
 	s = 1;
 	if (str[i] != '\0')
@@ -73,7 +73,7 @@ int	check_string(char *str)
 		index = i;
 		while (is_digit(str[i]) && flag++)
 			i++;
-		if (s == -1 || flag == 0)
+		if (s == -1 || flag == 1 || str[i] == '.')
 			return (-1);
 		return (index);
 	}
