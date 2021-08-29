@@ -7,7 +7,7 @@ INCLUDE := ./include
 SRC     := .
 SRCS    := $(wildcard $(SRC)/*.c)
 OBJS    := $(patsubst $(SRC)/%.c,$(OBJ)/%.o,$(SRCS))
-EXE     := $(BIN)/main.exe
+EXE     := $(BIN)/rush-02
 CFLAGS  := -I$(INCLUDE)
 LDLIBS  := -lm
 
