@@ -7,7 +7,7 @@ SRC     := .
 SRCS    := $(wildcard $(SRC)/*.c)
 OBJS    := $(patsubst $(SRC)/%.c,$(OBJ)/%.o,$(SRCS))
 EXE     := ./rush-02
-CFLAGS  := -I$(INCLUDE)
+CFLAGS  := -Wall -Werror -Wextra -I$(INCLUDE)
 LDLIBS  := -lm
 
 .PHONY: all run clean
