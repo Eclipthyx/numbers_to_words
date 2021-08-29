@@ -56,6 +56,7 @@ void rec(char *string, int size, struct s_node **dict)
 	digit_count = count_digits(string);
 	skip = (digit_count - 1) % 3 + 1;
 
+	printf("%d", skip);
 	if((digit_count > 0) && (string[0] != '\0'))
 	{
 		if(skip == 1)
@@ -85,18 +86,11 @@ void rec(char *string, int size, struct s_node **dict)
 			else if(string[0] == '0')
 			{
 				rec(string + 1, size, dict);
-			}else if(string[0] > '1')
+			}else if(string[0] >= '1')
 			{
-				if(string[1] == '0')
-				{
-					display_word(string, dict, 2, 3);
-					rec(string + 1, size, dict);
-				}
-				else
-				{
-					display_word(string, dict, 2, 3);
-					rec(string + 1, size, dict);
-				}
+				display_word(string, dict, 2, 3);
+				rec(string + 1, size, dict);
+
 			}
 		}else if(skip == 3){
 			if(string[0] != '0')
