@@ -9,10 +9,12 @@ int	is_digit(char c)
 	return (0);
 }
 
-int	calculate_hash(char *str, int *i, int index)
+int	calculate_hash(char *str, int *i)
 {
 	int	result;
+    int index;
 
+    index = 0;
 	result = 0;
 	while (is_digit(str[*i + index]))
 	{
