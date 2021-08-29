@@ -60,15 +60,14 @@ int	check_string(char *str)
 	flag = 0;
 	i = 0;
 	s = 1;
-	while (str[i] != '\0')
+	if (str[i] != '\0')
 	{
 		while (is_whitespace(str[i]))
 			i++;
 		while (str[i] == '+' || str[i] == '-')
 		{
-			if (str[i] == '-')
+			if (str[i++] == '-')
 				s *= -1;
-			i++;
 		}
 		index = i;
 		while (is_digit(str[i]) && flag++)
@@ -77,4 +76,5 @@ int	check_string(char *str)
 			return (-1);
 		return (index);
 	}
+	return (-1);
 }

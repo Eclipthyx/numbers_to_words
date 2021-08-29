@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	rec(string + start, count_digits(string), dict);
+	rec(string + start, count_digits(string), dict, 0);
 	write(1, "\n", 1);
 	return (0);
 }
