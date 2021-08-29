@@ -8,6 +8,7 @@
 #include "../include/rec.h"
 #include "../include/whitespace.h"
 #include "../include/key.h"
+#include "../include/value.h"
 
 struct	s_node	**init_dict(void)
 {
@@ -73,7 +74,7 @@ int	check_string(char *str)
 		index = i;
 		while (is_digit(str[i]) && flag++)
 			i++;
-		if (s == -1 || flag == 1 || str[i] == '.')
+		if (s == -1 || flag == 1 || str[i] == '.' || is_alpha(str[i]))
 			return (-1);
 		return (index);
 	}
