@@ -5,6 +5,7 @@
 #include "../include/rec.h"
 #include "../include/help_functions.h"
 #include "../include/constants.h"
+#include "../include/free_memory.h"
 
 int	main(int argc, char **argv)
 {
@@ -29,5 +30,6 @@ int	main(int argc, char **argv)
 	}
 	rec(string + start, count_digits(string), dict, 0);
 	write(1, "\n", 1);
+    free_hash_map(dict);
 	return (0);
 }

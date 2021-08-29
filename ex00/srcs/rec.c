@@ -3,6 +3,7 @@
 #include "../include/key.h"
 #include "../include/dict_operations.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void	rec(char *string, int size, struct s_node **dict, int flag);
 
@@ -20,6 +21,7 @@ void	display_word(struct s_object obj, int number_size, int mode)
 	index_hash = calculate_hash(new, &temp);
 	value = find(obj.dict[index_hash], new);
 	put_str(value);
+    free(new);
 }
 
 void	rec_1(struct s_object obj, int size, int digit_count)
