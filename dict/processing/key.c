@@ -1,4 +1,4 @@
-#include "../constants.h"
+#include "../../constants.h"
 
 
 int	is_digit(char c)
@@ -22,6 +22,7 @@ int calculate_hash(char *str, int *i, int index)
 	}
     return (result);
 }
+
 
 int	set_key(char *str, int *index, char **key)
 {
