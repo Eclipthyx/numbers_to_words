@@ -1,13 +1,12 @@
 MKDIR   := mkdir
 RMDIR   := rm -rf
 CC      := gcc
-BIN     := ./bin
 OBJ     := ./obj
 INCLUDE := ./include
 SRC     := .
 SRCS    := $(wildcard $(SRC)/*.c)
 OBJS    := $(patsubst $(SRC)/%.c,$(OBJ)/%.o,$(SRCS))
-EXE     := $(BIN)/rush-02
+EXE     := ./rush-02
 CFLAGS  := -I$(INCLUDE)
 LDLIBS  := -lm
 
@@ -15,17 +14,17 @@ LDLIBS  := -lm
 
 all: $(EXE)
 
-$(EXE): $(OBJS) | $(BIN)
+$(EXE): $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 $(OBJ)/%.o: $(SRC)/%.c | $(OBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BIN) $(OBJ):
+$(OBJ):
 	$(MKDIR) $@
 
 run: $(EXE)
 	$<
 
 clean:
-	$(RMDIR) $(OBJ) $(BIN)
+	$(RMDIR) $(OBJ)
