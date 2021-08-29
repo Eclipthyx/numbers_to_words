@@ -21,9 +21,16 @@ char	*remove_zeroes(char *o)
 	return (o + i);
 }
 
-int	f(int start, char *string)
+void	f(char *string, int start, struct s_node **dict)
 {
-	start = check_string(string);
+	string = remove_zeroes(string + start);
+	rec(string, count_digits(string), dict, 0);
+	write(1, "\n", 1);
+	free_hash_map(dict);
+}
+
+int	f2(int start)
+{
 	if (start == -1)
 	{
 		write(1, "Error\n", 6);
@@ -52,11 +59,9 @@ int	main(int argc, char **argv)
 		write(1, "Dict Error\n", 11);
 		return (1);
 	}
-	if (f(start, string))
+	start = check_string(string);
+	if (f2(start))
 		return (1);
-	string = remove_zeroes(string + start);
-	rec(string, count_digits(string), dict, 0);
-	write(1, "\n", 1);
-	free_hash_map(dict);
+	f(string, start, dict);
 	return (0);
 }

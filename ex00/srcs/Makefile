@@ -27,4 +27,4 @@ run: $(EXE)
 	$<
 
 clean:
-	$(RMDIR) $(OBJ)
+	$(RMDIR) $(OBJ) $(EXE)
