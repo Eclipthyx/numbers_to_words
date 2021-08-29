@@ -21,6 +21,17 @@ char	*remove_zeroes(char *o)
 	return (o + i);
 }
 
+int	f(int start, char *string)
+{
+	start = check_string(string);
+	if (start == -1)
+	{
+		write(1, "Error\n", 6);
+		return (1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	struct s_node	**dict;
@@ -31,17 +42,18 @@ int	main(int argc, char **argv)
 		string = argv[1];
 	else if (argc == 3)
 		string = argv[2];
-	if ((argc != 2 && argc != 3) || fill_dict(argc, argv, &dict))
-	{
-		write(1, "Dict Error\n", 11);
-		return (1);
-	}
-	start = check_string(string);
-	if (start == -1)
+	else
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
+	if (fill_dict(argc, argv, &dict))
+	{
+		write(1, "Dict Error\n", 11);
+		return (1);
+	}
+	if (f(start, string))
+		return (1);
 	string = remove_zeroes(string + start);
 	rec(string, count_digits(string), dict, 0);
 	write(1, "\n", 1);
