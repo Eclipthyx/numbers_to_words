@@ -1,6 +1,5 @@
 #include "../../constants.h"
 
-
 int	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
@@ -10,19 +9,18 @@ int	is_digit(char c)
 	return (0);
 }
 
-int calculate_hash(char *str, int *i, int index)
+int	calculate_hash(char *str, int *i, int index)
 {
-    int result;
+	int	result;
 
-    result = 0;
+	result = 0;
 	while (is_digit(str[*i + index]))
 	{
 		result = (str[*i + index] * (*i + 1) + result) % g_max;
 		(*i)++;
 	}
-    return (result);
+	return (result);
 }
-
 
 int	set_key(char *str, int *index, char **key)
 {
@@ -32,7 +30,6 @@ int	set_key(char *str, int *index, char **key)
 
 	i = 0;
 	result = calculate_hash(str, &i, *index);
-
 	*key = malloc(i * sizeof (char) + 1);
 	j = 0;
 	while (j < i)

@@ -7,7 +7,7 @@
 //And sets key and value
 void	process_line(char *str, int *index, struct s_node *new_node, struct s_node **dict)
 {
-	int	index_hash;
+	int		index_hash;
 	char	**new_key;
 	char	**new_value;
 

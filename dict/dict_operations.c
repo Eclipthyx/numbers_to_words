@@ -1,31 +1,36 @@
 #include "../help_functions/help_functions.h"
-char *find(struct s_node *node, char *key)
+char	*find(struct s_node *node, char *key)
 {
-	int retval = 0;
-	struct s_node *ptr = node;
-	while (ptr != 0) 
+	int				retval;
+	struct s_node	*ptr;
+
+	retval = 0;
+	ptr = node;
+	while (ptr != 0)
 	{
 		if (str_cmp(ptr->key, key) == 0)
 		{
 			return (ptr->value);
 		}
-  		ptr = ptr->next;
+		ptr = ptr->next;
 	}
 }
 
-
-void insert(struct s_node **dict, struct s_node *new_node, int index)
+void	insert(struct s_node **dict, struct s_node *new_node, int index)
 {
-	struct s_node *ptr; 
-	if(dict[index] != 0)
+	struct s_node	*ptr;
+
+	if (dict[index] != 0)
 	{
 		ptr = dict[index];
-		while(ptr->next != 0)
+		while (ptr->next != 0)
 		{
 			ptr = ptr->next;
 		}
 		ptr->next = new_node;
-	}else{
+	}
+	else
+	{
 		dict[index] = new_node;
 	}
 }
