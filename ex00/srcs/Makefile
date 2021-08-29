@@ -1,5 +1,5 @@
 MKDIR   := mkdir
-RMDIR   := rm -rf /S /Q
+RMDIR   := rm -rf
 CC      := gcc
 BIN     := ./bin
 OBJ     := ./obj
