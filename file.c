@@ -71,6 +71,8 @@ void rec(char *string, int size, struct s_node **dict)
 			{
 				if(digit_count > 1)
 					display_word(string, dict, digit_count, 1);
+				if(size == 1)
+					display_word(string, dict, digit_count, 2);
 			}
 			rec(string + 1, 0, dict);
 		}else if(skip == 2)
