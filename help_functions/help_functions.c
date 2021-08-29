@@ -1,7 +1,5 @@
 void put_str(char *str)
 {
-	int i;
-	i = 0;
 	while(*str != '\0')
 	{
 		write(1, str, 1);

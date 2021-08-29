@@ -1,10 +1,8 @@
 #include "../help_functions/help_functions.h"
 char	*find(struct s_node *node, char *key)
 {
-	int				retval;
 	struct s_node	*ptr;
 
-	retval = 0;
 	ptr = node;
 	while (ptr != 0)
 	{
@@ -14,6 +12,7 @@ char	*find(struct s_node *node, char *key)
 		}
 		ptr = ptr->next;
 	}
+    return (0);
 }
 
 void	insert(struct s_node **dict, struct s_node *new_node, int index)
