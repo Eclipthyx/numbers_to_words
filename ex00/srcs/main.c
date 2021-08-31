@@ -20,14 +20,36 @@ char	*remove_zeroes(char *o)
 		return (o + i - 1);
 	return (o + i);
 }
+void display(struct s_node **dict)
+{
+	struct s_node *ptr;
 
+	int i = 0;
+	while(i < g_max)
+	{
+		if(dict[i] != 0)
+		{
+			ptr = dict[i];
+			if(ptr->next)
+			{
+				printf("[%d]%s --->", i, ptr->key);
+				ptr = ptr->next;
+			}
+			printf("[%d]%s ", i, ptr->key);
+			printf("\n");
+		}
+		i++;
+	}
+}
 void	f(char *string, int start, struct s_node **dict)
 {
 	string = remove_zeroes(string + start);
 	rec(string, count_digits(string), dict, 0);
 	write(1, "\n", 1);
+	display(dict);
 	free_hash_map(dict);
 }
+
 
 int	f2(int start)
 {
